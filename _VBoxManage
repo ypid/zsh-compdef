@@ -1,7 +1,9 @@
 #compdef VBoxManage
 
-# Based on "Oracle VM VirtualBox Command Line Management Interface Version 3.2.0"
-# and a close reading of _cvs from the ZSH functions directory.
+# Based on "Oracle VM VirtualBox Command Line Management Interface
+# Version 3.2.0" and a close reading of _cvs from the ZSH functions
+# directory. Options and arguments are manually specified, which
+# may cause drift should VBoxManage change.
 
 _VBoxManage() {
   _arguments -s \
@@ -16,18 +18,49 @@ _VBoxManage() {
 _VBoxManage_command() {
 
   (( $+_VBoxManage_cmds )) || _VBoxManage_cmds=(
-    # TODO fix this up... looking for qr/VBoxManage\s+[a-z]*/
-    ${${(f)"$(_call_program commands VBoxManage 2>&1)"}[2,-2]/(#b) #([a-z]##) #([A-Z])/$match[1]:${match[2]:l}}
+    'list:Show information about various objects' \
+    'showvminfo:Information about a VM' \
+    'registervm:Register a VM' \
+    'unregistervm:Unregister a VM' \
+    'createvm:Create a VM' \
+    'modifyvm:Change a VM' \
+    'import:Import an OVD image' \
+    'export:Export an OVD image' \
+    'startvm:Start a VM' \
+    'controlvm:Issue commands to a VM' \
+    'discardstate:Discard state for a VM' \
+    'adoptstate:Adopt a state file for a VM' \
+    'snapshot:Snapshot commands for a VM' \
+    'openmedium:Open a disk or CD-ROM' \
+    'closemedium:Close a disk or CD-ROM' \
+    'storageattach:Attach a device' \
+    'storagectl:Add or remove a device' \
+    'showhdinfo:Show information about a device' \
+    'createhd:Create a disk' \
+    'modifyhd:Modify a disk' \
+    'clonehd:Clone a disk' \
+    'convertfromraw:Convert a disk image' \
+    'addiscsidisk:Add an iSCSI disk' \
+    'getextradata:Get metadata' \
+    'setextradata:Set metadta' \
+    'setproperty:Set a property' \
+    'usbfilter:USB device commands' \
+    'sharedfolder:Shared folder commands' \
+    'vmstatistics:Show VM statistics' \
+    'guestproperty:Interact with guest properties' \
+    'guestcontrol:Execute a guest control' \
+    'metrics:Interact with metrics commands' \
+    'hostonlyif:Network interface command' \
+    'dhcpserver:Manage DHCP servers'
   )
 
   if (( CURRENT == 1 )); then
-    # TODO figure out how to extirpate the _cvs_syns from this...
-    _describe -t commands 'VBoxManage command' _VBoxManage_cmds || compadd "$@" - ${(s.:.)${(j.:.)_cvs_syns}}
+    _describe -t commands 'VBoxManage command' _VBoxManage_cmds
   else
     local curcontext="$curcontext"
 
     # TODO figure out how to extirpate the _cvs_syns from this...
-    cmd="${${_VBoxManage_cmds[(r)$words[1]:*]%%:*}:-${(k)_cvs_syns[(r)(*:|)$words[1](:*|)]}}"
+    cmd="${_VBoxManage_cmds[(r)$words[1]:*]%%:*}"
     if (( $#cmd )); then
       curcontext="${curcontext%:*:*}:VBoxManage-${cmd}:"
       _call_function ret _VBoxManage_$cmd || _message 'no more arguments'
@@ -38,26 +71,16 @@ _VBoxManage_command() {
   fi
 }
 
-# define completion functions for each cvs command
-
-(( $+functions[_VBoxManage_[-v|--version]] )) ||
-_VBoxManage_[-v|--version]() {
-  _arguments -s \
-    'TODO' \
-}
-
-(( $+functions[_VBoxManage_[-q|--nologo]] )) ||
-_VBoxManage_[-q|--nologo]() {
-  _arguments -s \
-    'TODO' \
-}
+# define completion functions for each VBoxManage command
 
 (( $+functions[_VBoxManage_list] )) ||
 _VBoxManage_list() {
   _arguments -s \
-    'TODO' \
+    '(-)'{-l,--long}'[be verbose]' \
+    '1:command:(vms runningvms ostypes hostdvds hostfloppies bridgedifs hostonlyifs dhcpservers hostinfo hostcpuids hddbackends hdds dvds floppies)'
 }
 
+# TODO --log exclusive of the other options? Command listed twice ...
 (( $+functions[_VBoxManage_showvminfo] )) ||
 _VBoxManage_showvminfo() {
   _arguments -s \
@@ -178,6 +201,7 @@ _VBoxManage_clonehd() {
     'TODO' \
 }
 
+# TODO different exclusive modes to this command as well?
 (( $+functions[_VBoxManage_convertfromraw] )) ||
 _VBoxManage_convertfromraw() {
   _arguments -s \
@@ -208,12 +232,14 @@ _VBoxManage_setproperty() {
     'TODO' \
 }
 
+# TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_usbfilter] )) ||
 _VBoxManage_usbfilter() {
   _arguments -s \
     'TODO' \
 }
 
+# TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_sharedfolder] )) ||
 _VBoxManage_sharedfolder() {
   _arguments -s \
@@ -226,6 +252,7 @@ _VBoxManage_vmstatistics() {
     'TODO' \
 }
 
+# TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_guestproperty] )) ||
 _VBoxManage_guestproperty() {
   _arguments -s \
@@ -238,6 +265,7 @@ _VBoxManage_guestcontrol() {
     'TODO' \
 }
 
+# TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_metrics] )) ||
 _VBoxManage_metrics() {
   _arguments -s \
@@ -250,6 +278,7 @@ _VBoxManage_hostonlyif() {
     'TODO' \
 }
 
+# TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_dhcpserver] )) ||
 _VBoxManage_dhcpserver() {
   _arguments -s \
