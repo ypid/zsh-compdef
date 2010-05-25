@@ -1,0 +1,257 @@
+#compdef VBoxManage
+
+# Based on "Oracle VM VirtualBox Command Line Management Interface Version 3.2.0"
+# and a close reading of _cvs from the ZSH functions directory.
+
+_VBoxManage() {
+  _arguments -s \
+    '(-)'{-v,--version}'[print version number and exit]' \
+    '(-)'{-q,--nologo}'[suppress the logo]' \
+    '*::VBoxManage command:_VBoxManage_command'
+}
+
+# define VBoxManage command dispatch function.
+
+(( $+functions[_VBoxManage_command] )) ||
+_VBoxManage_command() {
+
+  (( $+_VBoxManage_cmds )) || _VBoxManage_cmds=(
+    # TODO fix this up... looking for qr/VBoxManage\s+[a-z]*/
+    ${${(f)"$(_call_program commands VBoxManage 2>&1)"}[2,-2]/(#b) #([a-z]##) #([A-Z])/$match[1]:${match[2]:l}}
+  )
+
+  if (( CURRENT == 1 )); then
+    # TODO figure out how to extirpate the _cvs_syns from this...
+    _describe -t commands 'VBoxManage command' _VBoxManage_cmds || compadd "$@" - ${(s.:.)${(j.:.)_cvs_syns}}
+  else
+    local curcontext="$curcontext"
+
+    # TODO figure out how to extirpate the _cvs_syns from this...
+    cmd="${${_VBoxManage_cmds[(r)$words[1]:*]%%:*}:-${(k)_cvs_syns[(r)(*:|)$words[1](:*|)]}}"
+    if (( $#cmd )); then
+      curcontext="${curcontext%:*:*}:VBoxManage-${cmd}:"
+      _call_function ret _VBoxManage_$cmd || _message 'no more arguments'
+    else
+      _message "unknown VBoxManage command: $words[1]"
+    fi
+    return ret
+  fi
+}
+
+# define completion functions for each cvs command
+
+(( $+functions[_VBoxManage_[-v|--version]] )) ||
+_VBoxManage_[-v|--version]() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_[-q|--nologo]] )) ||
+_VBoxManage_[-q|--nologo]() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_list] )) ||
+_VBoxManage_list() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_showvminfo] )) ||
+_VBoxManage_showvminfo() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_registervm] )) ||
+_VBoxManage_registervm() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_unregistervm] )) ||
+_VBoxManage_unregistervm() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_createvm] )) ||
+_VBoxManage_createvm() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_modifyvm] )) ||
+_VBoxManage_modifyvm() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_import] )) ||
+_VBoxManage_import() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_export] )) ||
+_VBoxManage_export() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_startvm] )) ||
+_VBoxManage_startvm() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_controlvm] )) ||
+_VBoxManage_controlvm() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_discardstate] )) ||
+_VBoxManage_discardstate() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_adoptstate] )) ||
+_VBoxManage_adoptstate() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_snapshot] )) ||
+_VBoxManage_snapshot() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_openmedium] )) ||
+_VBoxManage_openmedium() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_closemedium] )) ||
+_VBoxManage_closemedium() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_storageattach] )) ||
+_VBoxManage_storageattach() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_storagectl] )) ||
+_VBoxManage_storagectl() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_showhdinfo] )) ||
+_VBoxManage_showhdinfo() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_createhd] )) ||
+_VBoxManage_createhd() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_modifyhd] )) ||
+_VBoxManage_modifyhd() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_clonehd] )) ||
+_VBoxManage_clonehd() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_convertfromraw] )) ||
+_VBoxManage_convertfromraw() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_addiscsidisk] )) ||
+_VBoxManage_addiscsidisk() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_getextradata] )) ||
+_VBoxManage_getextradata() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_setextradata] )) ||
+_VBoxManage_setextradata() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_setproperty] )) ||
+_VBoxManage_setproperty() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_usbfilter] )) ||
+_VBoxManage_usbfilter() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_sharedfolder] )) ||
+_VBoxManage_sharedfolder() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_vmstatistics] )) ||
+_VBoxManage_vmstatistics() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_guestproperty] )) ||
+_VBoxManage_guestproperty() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_guestcontrol] )) ||
+_VBoxManage_guestcontrol() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_metrics] )) ||
+_VBoxManage_metrics() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_hostonlyif] )) ||
+_VBoxManage_hostonlyif() {
+  _arguments -s \
+    'TODO' \
+}
+
+(( $+functions[_VBoxManage_dhcpserver] )) ||
+_VBoxManage_dhcpserver() {
+  _arguments -s \
+    'TODO' \
+}
