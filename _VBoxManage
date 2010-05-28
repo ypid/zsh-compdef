@@ -354,8 +354,6 @@ _VBoxManage_convertfromraw() {
     'TODO' \
 }
 
-# Hmm, this option w/o arguments creates a UUID, cannot find any
-# interface to this in the GUI :/
 (( $+functions[_VBoxManage_addiscsidisk] )) ||
 _VBoxManage_addiscsidisk() {
   _arguments -s \
