@@ -2,11 +2,15 @@
 
 # Based on "Oracle VM VirtualBox Command Line Management Interface
 # Version 3.2.0" and a close reading of _cvs from the ZSH functions
-# directory. Options and arguments are manually specified, which
-# may cause drift should VBoxManage change.
+# directory. Options and arguments are manually specified, which may
+# cause drift should VBoxManage change.
 #
 # 'vbm' is my alias, as typing CamelCase hurts my fingers:
 # alias vbm='VBoxManage -q'
+#
+# NOTE this completion script is incomplete; see the various TODO. Also,
+# various improvements can likely be made, as I hardly understand the
+# ZSH completion system.
 
 _VBoxManage() {
   _arguments -s \
