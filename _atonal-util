@@ -1,0 +1,10 @@
+#compdef atonal-util
+
+local expl ret=1
+
+if [[ CURRENT -eq 2 ]]; then
+  _wanted configurations expl 'configuration' compadd "$@" - \
+    $(_call_program atonal-util atonal-util --listmodes) && ret=0
+fi
+
+return ret
