@@ -1,0 +1,20 @@
+#compdef ly-fu
+
+local ret=1
+
+# Just the command line options; probably can't complete music
+_arguments -C \
+  '--absolute[absolute mode]' \
+  '--articulate[include articulation]' \
+  '--help[display help]' \
+  '--instrument=[instrument]:instrument:' \
+  '--layout[save layout]' \
+  '--open[display layout]' \
+  '--partial=[leading expression]:expression' \
+  '--relative=[starting note]:note:' \
+  '--repeats=[number of repeats]:count:' \
+  '--silent[skip MIDI playback]' \
+  '--sleep=[sleep kluge]:seconds:' \
+  '--tempo=[tempo]:tempo:' && ret=0
+
+return $ret
