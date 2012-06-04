@@ -1,4 +1,6 @@
 #compdef ly-fu
+#
+# https://github.com/thrig/sial.org-scripts/tree/master/ly-fu
 
 local ret=1
 
