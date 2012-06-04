@@ -1,3 +1,12 @@
-For more info, see http://bewatermyfriend.org/p/2012/003/ or try #zsh on
-the Freenode IRC network (where we will likely point you at the above
-and other docs).
+Various ZSH completion scripts. These require http://www.zsh.org/ and
+must be located in a $fpath directory, for example under
+~/.zsh/functions via the following in the ~/.zshrc config file:
+
+  fpath=(~/.zsh/functions $fpath)
+
+For more info on ZSH completion, consult:
+
+http://bewatermyfriend.org/p/2012/003/
+
+or try #zsh on the Freenode IRC network (where we will likely point you
+at the above and other docs).
