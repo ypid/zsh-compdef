@@ -130,7 +130,7 @@ if [[ ${#lyinstruments} -eq 0 ]]; then
 fi
 
 # Just the command line options; probably can't complete music
-_arguments -C \
+_arguments \
   '--absolute[absolute mode]' \
   '--articulate[include articulation]' \
   '--help[display help]' \
