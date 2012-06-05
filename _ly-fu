@@ -1,6 +1,6 @@
 #compdef ly-fu
 #
-# https://github.com/thrig/sial.org-scripts/tree/master/ly-fu
+# For https://github.com/thrig/sial.org-scripts/tree/master/ly-fu
 
 local ret=1
 
@@ -131,14 +131,14 @@ fi
 
 # Just the command line options; probably can't complete music
 _arguments \
-  '--absolute[absolute mode]' \
+  '(--relative)--absolute[absolute mode]' \
   '--articulate[include articulation]' \
-  '--help[display help]' \
+  '(-)--help[display help]' \
   '--instrument=[instrument]:instrument:_values "instruments" $lyinstruments' \
   '--layout[save layout]' \
   '--open[display layout]' \
   '--partial=[leading expression]:expression' \
-  '--relative=[starting note]:note:' \
+  '(--absolute)--relative=[starting note]:note:' \
   '--repeats=[number of repeats]:count:' \
   '--silent[skip MIDI playback]' \
   '--sleep=[sleep kluge]:seconds:' \
