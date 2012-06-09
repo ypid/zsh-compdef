@@ -8,7 +8,7 @@ _arguments -s \
   '(-m)-F[commit message file]:message file:_files' \
   '-n[dry run, shows command that would be run]' \
   '-r[revision number]:revision:' \
-  ':*:_files' \
+  '(-)*:filename:_files' \
   && ret=0
 
 return $ret
