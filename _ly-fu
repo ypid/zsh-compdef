@@ -133,7 +133,7 @@ fi
 _arguments \
   '(--relative)--absolute[absolute mode]' \
   '--articulate[include articulation]' \
-  '(-)--help[display help]' \
+  '(- *)--help[display help]' \
   '--instrument=[instrument]:instrument:_values "instruments" $lyinstruments' \
   '--layout[save layout]' \
   '--open[display layout]' \

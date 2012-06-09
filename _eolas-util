@@ -4,7 +4,7 @@
 
 _eolas-util() {
   _arguments -s \
-    '-h[print help information]' \
+    '(- *)-h[print help information]' \
     '-l[list available handlers]' \
     '*::eolas-util command:_eolas_util_command'
 }
