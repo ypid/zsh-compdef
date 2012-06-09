@@ -4,15 +4,20 @@ must be located in a $fpath directory, for example under
 
   fpath=(~/.zsh/functions $fpath)
 
-For more info on ZSH completion, consult:
+* For more info on ZSH completion, consult:
 
-http://bewatermyfriend.org/p/2012/003/
+  http://bewatermyfriend.org/p/2012/003/
 
-or try #zsh on the Freenode IRC network (where we will likely point you
-at the above and other docs).
+  or try #zsh on the Freenode IRC network (where we will likely point
+  you at the above and other docs).
 
-Many of these completions are for utilities under:
+* Even more completion scripts can be found under:
 
-https://github.com/thrig/sial.org-scripts
+  http://zsh.sourceforge.net/Arc/git.html
+  https://github.com/zsh-users/zsh-completions/
 
-or one or the other of my Perl modules.
+* Many of the completions here are for utilities under:
+
+  https://github.com/thrig/sial.org-scripts
+
+  or one or the other of my Perl modules.
