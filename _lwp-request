@@ -1,0 +1,33 @@
+#compdef lwp-request
+#
+# XXX -C needs user:password, not just _users hmmmmm
+# XXX probably can do excludes on various incompatible or overlapping options
+
+local ret=1
+
+_arguments -s -w \
+  '-C[username and password for basic auth]:userpass:_users' \
+  '-E[print response status chain with full headers]' \
+  '*-H[specify custom HTTP header]:header:' \
+  '-P[do not load env proxy settings]' \
+  '-S[print response status chain]' \
+  '(-u)-U[print request headers, method, and abs URL]' \
+  '-a[set ASCII mode for I/O]' \
+  '-b[base URI for relative URIs]:baseuri:_urls' \
+  '-c[set Content-Type for the request]:content-type:' \
+  '-d[do not print response content]' \
+  '-e[print response headers]' \
+  '-f[force request through]' \
+  '(- *)-h[display help]' \
+  '-i[set If-Modified-Since from file as literal date]:file-or-date:_files' \
+  '-m[HTTP method]:method:(GET HEAD POST PUT DELETE TRACE OPTIONS)' \
+  '-o[output format]:format:(dump html links ps text)' \
+  '-p[proxy-url]:proxy-url:_urls' \
+  '-s[print response status code]' \
+  '-t[timeout]:timeout:' \
+  '-u[print request method and abs URL]' \
+  '(- *)-v[print version]' \
+  '(-)1:url:_urls' \
+  && ret=0
+
+return $ret
