@@ -1,6 +1,5 @@
 #compdef lwp-request
 #
-# XXX -C needs user:password, not just _users hmmmmm
 # XXX probably can do excludes on various incompatible or overlapping options
 
 local curcontext="$curcontext" state line
