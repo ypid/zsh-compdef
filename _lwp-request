@@ -3,12 +3,13 @@
 # XXX -C needs user:password, not just _users hmmmmm
 # XXX probably can do excludes on various incompatible or overlapping options
 
-local ret=1
+local curcontext="$curcontext" state line
+typeset -A opt_args
 
-_arguments -s -w \
-  '-C[username and password for basic auth]:userpass:_users' \
+_arguments -C -s -w \
+  '-C[username and password for basic auth]:userpass:->userpass' \
   '-E[print response status chain with full headers]' \
-  '*-H[specify custom HTTP header]:header:' \
+  '*-H[send a custom HTTP header]:header:->header' \
   '-P[do not load env proxy settings]' \
   '-S[print response status chain]' \
   '(-u)-U[print request headers, method, and abs URL]' \
@@ -28,6 +29,64 @@ _arguments -s -w \
   '-u[print request method and abs URL]' \
   '(- *)-v[print version]' \
   '(-)1:url:_urls' \
-  && ret=0
+  && return 0
 
-return $ret
+case "$state" in
+  # shamelessly stolen from Mikachu-enhanced patch to _wget completion
+  header)
+    local -a headers
+    headers=(
+             Accept{,-{Charset,Encoding,Language,Datetime}}
+             Authorization
+             Cache-Control
+             Connection
+             Cookie
+             Content-{Length,MD5,Type}
+             Date
+             Expect
+             From
+             Host
+             If-Match
+             If-Modified-Since
+             If-None-Match
+             If-Range
+             If-Unmodified-Since
+             Max-Forwards
+             Pragma
+             Proxy-Authorization
+             Range
+             Referer
+             TE
+             Upgrade
+             User-Agent
+             Via
+             Warning
+             X-Requested-With
+             X-Do-Not-Track
+             DNT
+             X-Forwarded-For
+             X-ATT-DeviceId
+             X-Wap-Profile
+             )
+    # XXX this can emit two spaces, only the first of which is
+    # escaped, forcing the user to rubout one. Ideally would only
+    # generate one space.
+    headers=($^headers\\:\ )
+    _describe -t header 'HTTP header' headers
+  ;;
+
+  # and this I cargo culted mostly from _chown
+  userpass)
+    if compset -P '*[:]'; then
+      _message -e password password
+    else
+      if compset -S '[:]*'; then
+        suf=()
+      else
+        suf=( -qS ':' )
+      fi
+      _users "$suf[@]" && return 0
+    fi
+  ;;
+
+esac
