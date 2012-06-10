@@ -8,7 +8,7 @@ local ret=1
 # note names, but keeping it fairly simple soas not to clutter things.
 _smog_intervals=(0 1 2 3 4 5 6 7 8 9 10 11 c cis d dis e f fis g gis a ais b ces des ees fes ges aes bes eis bis nl)
 
-_smog_modes=(ionian lydian mixolydian dorian aeolian hminor hunminor mminor phrygian locrian major minor)
+_smog_modes=(ionian lydian mixolydian dorian aeolian hminor hunminor mminor phrygian locrian major minor amdorian)
 
 _arguments \
   '--direction=[direction (and magnitude) of music]:direction:' \
