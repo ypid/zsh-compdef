@@ -1,10 +1,4 @@
 #compdef ketchup
-#
-# But still need:
-#
-#   zstyle ':completion:*:*:ketchup:*' file-patterns '*(-/):directories'
-#
-# to limit to directories. Hmm.
 
 local ret=1
 
