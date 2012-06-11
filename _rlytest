@@ -1,0 +1,16 @@
+#compdef rlytest
+
+local ret=1
+
+_arguments -s \
+  '-f[sender addr]:senderaddr:' \
+  '-u[recip addr]:recipaddr:' \
+  '-s[header sender]:hdrsender:' \
+  '-r[header recip]:hdrrecip:' \
+  '-c[comment]:comment:' \
+  '-t[timeout]:timeout:' \
+  '-p[port]:port:_ports' \
+  '1:smtp host:_hosts' \
+  && ret=0
+
+return $ret
