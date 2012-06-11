@@ -2,19 +2,19 @@
 #
 # https://github.com/thrig/sial.org-scripts/tree/master/ly-fu
 
-local ret=1
+local curcontext="$curcontext" state line
+typeset -A opt_args
 
 # This could have negative or larger postive intervals, or different
 # note names, but keeping it fairly simple soas not to clutter things.
 _smog_intervals=(0 1 2 3 4 5 6 7 8 9 10 11 c cis d dis e f fis g gis a ais b ces des ees fes ges aes bes eis bis nl)
 
-_smog_modes=(ionian lydian mixolydian dorian aeolian hminor hunminor mminor phrygian locrian major minor amdorian)
-
 _arguments \
   '--direction=[direction (and magnitude) of music]:direction:' \
   '--intervals=[intervals or notes of scale]:intervals:_values -s , "intervals" $_smog_intervals' \
   '--length=[count of notes to generate]:count:' \
-  '--mode=[musical mode]:mode:_values "mode" $_smog_modes' \
+  '(- *)--listmodes[show available modes]' \
+  '--mode=[musical mode]:mode:->modes' \
   '--minor[minor mode]' \
   '--reverse[reverse order of intervals]' \
   '--flats[output using flats]' \
@@ -23,6 +23,10 @@ _arguments \
   '--raw[show pitch numbers not note names]' \
   '--relative[lilypond relative output]' \
   '--transpose=[number to transpose by]:number:' \
-  && ret=0
+  && return 0
 
-return $ret
+case "$state" in
+  modes)
+    _wanted mode expl 'mode' compadd $(_call_program mode scalemogrifier --listmodes)
+  ;;
+esac
