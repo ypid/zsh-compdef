@@ -5,7 +5,8 @@
 local curcontext="$curcontext" state line
 typeset -A opt_args
 
-_arguments -C -s -w \
+# could use '-s -w', but that makes lwp-request -H harder to complete
+_arguments -C -s \
   '-C[username and password for basic auth]:userpass:->userpass' \
   '-E[print response status chain with full headers]' \
   '*-H[send a custom HTTP header]:header:->header' \
