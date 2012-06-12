@@ -116,11 +116,19 @@ case "$state" in
     _describe -t dnsclass 'DNS class' dnsclasses
   ;;
   dnsquery)
-    # XXX need to complete _hosts if @ specified for server, ideally
-    # both @ or a hostname if at the beginning, and ideally keep track
-    # of what is before can do the @server (optional) [domain] [q-type]
-    # [q- class] etc. foo. Instead, just lookup a host for now...
-    _hosts
+    # XXX need to support grammer, probably by keeping track of where
+    # the command line is in the following:
+    #
+    # Usage:  dig [@global-server] [domain] [q-type] [q-class] {q-opt}
+    #             {global-d-opt} host [@local-server] {local-d-opt}
+    #             [ host [@local-server] {local-d-opt} [...]]
+    #
+    # but that is beyond my ability at present. So just complete hosts.
+    if compset -P '@'; then
+      _hosts
+    else
+      _hosts
+    fi
   ;;
   dnstype)
     local -a dnstypes
