@@ -22,82 +22,82 @@ _arguments -C -s \
   '(-t)-t[query type]:type:->dnstype' \
   '(-x)-x[IP address]:_ip' \
   '(-y)-y[hmac name and key data (unsafe)]:authinfo' \
-  '(+vc)+novc' \
-  '(+novc)+vc[TCP Mode]' \
-  '(+tcp)+notcp' \
-  '(+notcp)+tcp[TCP mode, alternate syntax]' \
-  '+time=[set query timeout]:timeout:' \
-  '+tries=[set number of UDP attempts]:count:' \
-  '+retry=[set number of UDP retries]:count' \
-  '+domain=[set default domainname]:domain:_hosts' \
-  '+bufsize=[set EDNS0 max UDP packet size]:number:' \
-  '+ndots=[set NDOTS value]:value:' \
-  '+edns=[set EDNS version]:version:' \
-  '(+search)+nosearch' \
-  '(+nosearch)+search[set whether to use searchlist]' \
-  '(+showsearch)+noshowsearch' \
-  '(+noshowsearch)+showsearch[search with intermediate results]' \
-  '(+recurse)+norecurse' \
-  '(+norecurse)+recurse[recursive mode]' \
-  '(+ignore)+noignore' \
-  '(+noignore)+ignore[do not revert to TCP for TC responses]' \
-  '(+fail)+nofail' \
-  '(+nofail)+fail[do not try next server on SERVFAIL]' \
-  '(+besteffort)+nobesteffort' \
-  '(+nobesteffort)+besteffort[try to parse even illegal messages]' \
-  '(+aaonly +aaflag)'{+noaaonly,+noaaflag} \
-  '(+noaaonly)'{+aaonly,+aaflag}'[set AA flag in query]' \
-  '(+adflag)+noadflag' \
-  '(+noadflag)+adflag[set AD flag in query]' \
-  '(+cdflag)+nocdflag' \
-  '(+nocdflag)+cdflag[set CD flag in query]' \
-  '(+cl)+nocl' \
-  '(+nocl)+cl[control display of class in records]' \
-  '(+cmd)+nocmd' \
-  '(+nocmd)+cmd[control display of command line]' \
-  '(+comments)+nocomments' \
-  '(+nocomments)+comments[control display of comment lines]' \
-  '(+rrcomments)+norrcomments' \
-  '(+norrcomments)+rrcomments[control display of per-record comments]' \
-  '(+question)+noquestion' \
-  '(+noquestion)+question[control display of question]' \
-  '(+answer)+noanswer' \
-  '(+noanswer)+answer[control display of answer]' \
-  '(+authority)+noauthority' \
-  '(+noauthority)+authority[control display of authority]' \
-  '(+additional)+noadditional' \
-  '(+noadditional)+additional[control display of additional]' \
-  '(+stats)+nostats' \
-  '(+nostats)+stats[control display of statistics]' \
-  '(+short)+noshort' \
-  '(+noshort)+short[disable all except short form of answer]' \
-  '(+ttlid)+nottlid' \
-  '(+nottlid)+ttlid[control display of ttls]' \
-  '(+all)+noall' \
-  '(+noall)+all[set all display flags]' \
-  '(+qr)+noqr' \
-  '(+noqr)+qr[print question before sending]' \
-  '(+nssearch)+nonssearch' \
-  '(+nonssearch)+nssearch[search all authoritative NS]' \
-  '(+identify)+noidentify' \
-  '(+noidentify)+identify[ID responders in short answers]' \
-  '(+trace)+notrace' \
-  '(+notrace)+trace[trace delegation down from root]' \
-  '(+dnssec)+nodnssec' \
-  '(+nodnssec)+dnssec[request DNSSEC records]' \
-  '(+nsid)+nonsid' \
-  '(+nonsid)+nsid[request name server ID]' \
-  '(+sigchase)+nosigchase' \
-  '(+nosigchase)+sigchase[chase DNSSEC signatures]' \
-  '+trusted-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
-  '(+topdown)+notopdown' \
-  '(+notopdown)+topdown[do DNSSEC validation top down mode]' \
-  '(+split)+nosplit' \
-  '(+nosplit)+split=[split hex/base64 fields into chunks]:value:' \
-  '(+multiline)+nomultiline' \
-  '(+nomultiline)+multiline[print records in a expanded format]' \
-  '(+onesoa)+noonesoa' \
-  '(+noonesoa)+onesoa[AXFR prints only one SOA record]' \
+  '*+novc' \
+  '*+vc[TCP Mode]' \
+  '*+notcp' \
+  '*+tcp[TCP mode, alternate syntax]' \
+  '*+time=[set query timeout]:timeout:' \
+  '*+tries=[set number of UDP attempts]:count:' \
+  '*+retry=[set number of UDP retries]:count' \
+  '*+domain=[set default domainname]:domain:_hosts' \
+  '*+bufsize=[set EDNS0 max UDP packet size]:number:' \
+  '*+ndots=[set NDOTS value]:value:' \
+  '*+edns=[set EDNS version]:version:' \
+  '*+nosearch' \
+  '*+search[set whether to use searchlist]' \
+  '*+noshowsearch' \
+  '*+showsearch[search with intermediate results]' \
+  '*+norecurse' \
+  '*+recurse[recursive mode]' \
+  '*+noignore' \
+  '*+ignore[do not revert to TCP for TC responses]' \
+  '*+nofail' \
+  '*+fail[do not try next server on SERVFAIL]' \
+  '*+nobesteffort' \
+  '*+besteffort[try to parse even illegal messages]' \
+  '*'{+noaaonly,+noaaflag} \
+  '*'{+aaonly,+aaflag}'[set AA flag in query]' \
+  '*+noadflag' \
+  '*+adflag[set AD flag in query]' \
+  '*+nocdflag' \
+  '*+cdflag[set CD flag in query]' \
+  '*+nocl' \
+  '*+cl[control display of class in records]' \
+  '*+nocmd' \
+  '*+cmd[control display of command line]' \
+  '*+nocomments' \
+  '*+comments[control display of comment lines]' \
+  '*+norrcomments' \
+  '*+rrcomments[control display of per-record comments]' \
+  '*+noquestion' \
+  '*+question[control display of question]' \
+  '*+noanswer' \
+  '*+answer[control display of answer]' \
+  '*+noauthority' \
+  '*+authority[control display of authority]' \
+  '*+noadditional' \
+  '*+additional[control display of additional]' \
+  '*+nostats' \
+  '*+stats[control display of statistics]' \
+  '*+noshort' \
+  '*+short[disable all except short form of answer]' \
+  '*+nottlid' \
+  '*+ttlid[control display of ttls]' \
+  '*+noall' \
+  '*+all[set all display flags]' \
+  '*+noqr' \
+  '*+qr[print question before sending]' \
+  '*+nonssearch' \
+  '*+nssearch[search all authoritative NS]' \
+  '*+noidentify' \
+  '*+identify[ID responders in short answers]' \
+  '*+notrace' \
+  '*+trace[trace delegation down from root]' \
+  '*+nodnssec' \
+  '*+dnssec[request DNSSEC records]' \
+  '*+nonsid' \
+  '*+nsid[request name server ID]' \
+  '*+sigchase)+nosigchase' \
+  '*+sigchase[chase DNSSEC signatures]' \
+  '*+trusted-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
+  '*+notopdown' \
+  '*+topdown[do DNSSEC validation top down mode]' \
+  '*+nosplit' \
+  '*+split=[split hex/base64 fields into chunks]:value:' \
+  '*+nomultiline' \
+  '*+multiline[print records in a expanded format]' \
+  '*+noonesoa' \
+  '*+onesoa[AXFR prints only one SOA record]' \
   '*: :->dnsquery' \
   && return 0
 
