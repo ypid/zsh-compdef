@@ -112,7 +112,7 @@ case "$state" in
   dnsclass)
     local -a dnsclasses
     # taken from http://www.bind9.net/dns-parameters
-    dnsclasses=(IN CH HS *)
+    dnsclasses=(IN CH HS)
     _describe -t dnsclass 'DNS class' dnsclasses
   ;;
   dnsquery)
@@ -132,8 +132,8 @@ case "$state" in
   ;;
   dnstype)
     local -a dnstypes
-    # taken from http://www.bind9.net/dns-parameters
-    dnstypes=(A NS MD MF CNAME SOA MB MG MR NULL WKS PTR HINFO MINFO MX TXT RP AFSDB X25 ISDN RT NSAP NSAP-PTR SIG KEY PX GPOS AAAA LOC NXT EID NIMLOC SRV ATMA NAPTR KX CERT A6 DNAME SINK OPT APL DS SSHFP IPSECKEY RRSIG NSEC DNSKEY DHCID NSEC3 NSEC3PARAM TLSA HIP NINFO RKEY TALINK CDS SPF UINFO UID GID UNSPEC TKEY TSIG IXFR AXFR MAILB MAILA * URI CAA TA DLV)
+    # taken from http://www.bind9.net/dns-parameters and * swapped for 'ANY'
+    dnstypes=(ANY A NS MD MF CNAME SOA MB MG MR NULL WKS PTR HINFO MINFO MX TXT RP AFSDB X25 ISDN RT NSAP NSAP-PTR SIG KEY PX GPOS AAAA LOC NXT EID NIMLOC SRV ATMA NAPTR KX CERT A6 DNAME SINK OPT APL DS SSHFP IPSECKEY RRSIG NSEC DNSKEY DHCID NSEC3 NSEC3PARAM TLSA HIP NINFO RKEY TALINK CDS SPF UINFO UID GID UNSPEC TKEY TSIG IXFR AXFR MAILB MAILA URI CAA TA DLV)
     _describe -t dnstype 'DNS type' dnstypes
   ;;
 esac
