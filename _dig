@@ -6,6 +6,9 @@ local curcontext="$curcontext" state line
 typeset -A opt_args
 
 # did not include +[no]defname as is deprecated
+#
+# XXX this option problematic due to - in option name, even with \-
+# '*+trusted\-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
 _arguments -C -s \
   '(- *)-h[display help]' \
   '(- *)-v[display version]' \
@@ -89,7 +92,6 @@ _arguments -C -s \
   '*+nsid[request name server ID]' \
   '*+sigchase)+nosigchase' \
   '*+sigchase[chase DNSSEC signatures]' \
-  '*+trusted-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
   '*+notopdown' \
   '*+topdown[do DNSSEC validation top down mode]' \
   '*+nosplit' \
@@ -116,6 +118,8 @@ case "$state" in
     _describe -t dnsclass 'DNS class' dnsclasses
   ;;
   dnsquery)
+    print -l $line >> /tmp/asdf
+    echo >> /tmp/asdf
     # XXX need to support grammer, probably by keeping track of where
     # the command line is in the following:
     #
@@ -125,9 +129,18 @@ case "$state" in
     #
     # but that is beyond my ability at present. So just complete hosts.
     if compset -P '@'; then
-      _hosts
+      _wanted hosts expl server _hosts && return 0
     else
-      _hosts
+      _wanted hosts expl server _hosts
+ 
+      # XXX this should instead be the count of non-@, -+, -- elements
+      # prior to the current position...
+      if [[ $#line -gt 1 ]]; then
+        local -a dnstypesshort
+        dnstypesshort=(ANY A NS CNAME SOA PTR HINFO MX TXT AAAA SRV IXFR AXFR)
+        local expl
+        _wanted dnsquery expl dnsquery compadd ANY A NS CNAME SOA PTR HINFO MX TXT AAAA SRV IXFR AXFR
+      fi
     fi
   ;;
   dnstype)
