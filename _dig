@@ -10,8 +10,8 @@ local -aU dnsclasses
 dnsclasses=(IN CH HS)
 
 # Though probably a better idea to do something like this elsewhere:
-# typeset -aU dns_servers
-# dns_servers=(8.8.4.4 8.8.8.8 ...)
+#   typeset -aU dns_servers
+#   dns_servers=('\:\:1' 8.8.4.4 8.8.8.8 othernsnameorip..)
 if [[ ${#dns_servers} -eq 0 ]]; then
   dns_servers=${(z)${(Mz)${(f)"$(</etc/resolv.conf)"}:#nameserver *}:#nameserver}
 fi
