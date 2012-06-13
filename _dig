@@ -5,10 +5,21 @@
 local curcontext="$curcontext" state line
 typeset -A opt_args
 
-# did not include +[no]defname as is deprecated
+local -aU dnsclasses
+# taken from http://www.bind9.net/dns-parameters
+dnsclasses=(IN CH HS)
+
+# Though probably a better idea to do something like this elsewhere:
+# typeset -aU dns_servers
+# dns_servers=(8.8.4.4 8.8.8.8 ...)
+if [[ ${#dns_servers} -eq 0 ]]; then
+  dns_servers=${(z)${(Mz)${(f)"$(</etc/resolv.conf)"}:#nameserver *}:#nameserver}
+fi
+
+# Did not include +[no]defname as is deprecated
 #
-# XXX this option problematic due to - in option name, even with \-
-# '*+trusted\-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
+# XXX this option problematic due to - in option name, even with \hypen:
+#   '*+trusted\-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
 _arguments -C -s \
   '(- *)-h[display help]' \
   '(- *)-v[display version]' \
@@ -112,14 +123,9 @@ case "$state" in
     fi
   ;;
   dnsclass)
-    local -a dnsclasses
-    # taken from http://www.bind9.net/dns-parameters
-    dnsclasses=(IN CH HS)
     _describe -t dnsclass 'DNS class' dnsclasses
   ;;
   dnsquery)
-    print -l $line >> /tmp/asdf
-    echo >> /tmp/asdf
     # XXX need to support grammer, probably by keeping track of where
     # the command line is in the following:
     #
@@ -129,7 +135,7 @@ case "$state" in
     #
     # but that is beyond my ability at present. So just complete hosts.
     if compset -P '@'; then
-      _wanted hosts expl server _hosts && return 0
+      _describe -t dnsserver 'DNS server' dns_servers
     else
       _wanted hosts expl server _hosts
  
