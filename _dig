@@ -144,8 +144,7 @@ case "$state" in
       if [[ $#line -gt 1 ]]; then
         local -a dnstypesshort
         dnstypesshort=(ANY A NS CNAME SOA PTR HINFO MX TXT AAAA SRV IXFR AXFR)
-        local expl
-        _wanted dnsquery expl dnsquery compadd ANY A NS CNAME SOA PTR HINFO MX TXT AAAA SRV IXFR AXFR
+        _describe -t dnsquery 'DNS query' dnstypesshort
       fi
     fi
   ;;
