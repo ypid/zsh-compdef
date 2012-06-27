@@ -14,8 +14,8 @@ _arguments \
   '--intervals=[intervals or notes of scale]:intervals:_values -s , "intervals" $_smog_intervals' \
   '--length=[count of notes to generate]:count:' \
   '(- *)--listmodes[show available modes]' \
-  '--mode=[musical mode]:mode:->modes' \
-  '--minor[minor mode]' \
+  '(--mode --minor)--mode=[musical mode]:mode:->modes' \
+  '(--mode --minor)--minor[minor mode]' \
   '--reverse[reverse order of intervals]' \
   '--flats[output using flats]' \
   '--ois=[custom output mapping interval list]:intervals:_values -s , "intervals" $_smog_intervals' \
