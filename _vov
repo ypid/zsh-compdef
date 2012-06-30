@@ -16,6 +16,7 @@ _arguments \
   '(- *)--listmodes[show available modes]' \
   '(--mode --minor)--minor[minor mode]' \
   '(--mode --minor)--mode=[musical mode]:mode:->modes' \
+  '--natural[ignore case distinctions of input numerals]' \
   '--raw[show pitch numbers not note names]' \
   '--transpose=[number to transpose by]:number:' \
   '*: :_values -s / "numerals" $numerals' \
