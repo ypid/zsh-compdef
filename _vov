@@ -1,0 +1,28 @@
+#compdef vov
+#
+# https://github.com/thrig/sial.org-scripts/tree/master/ly-fu
+
+local curcontext="$curcontext" state line
+typeset -A opt_args
+
+# XXX simplistic, really should feed to a case then figure out where in
+# numeral cursor is, what to offer from there, including b# prefix or **
+# or the like suffixes.
+local -a numerals
+numerals=(I II III IV V VI VII i ii iii iv v vi vii)
+
+_arguments \
+  '--flats[output using flats]' \
+  '(- *)--listmodes[show available modes]' \
+  '(--mode --minor)--minor[minor mode]' \
+  '(--mode --minor)--mode=[musical mode]:mode:->modes' \
+  '--raw[show pitch numbers not note names]' \
+  '--transpose=[number to transpose by]:number:' \
+  '*: :_values -s / "numerals" $numerals' \
+  && return 0
+
+case "$state" in
+  modes)
+    _wanted mode expl 'mode' compadd $(_call_program mode vov --listmodes)
+  ;;
+esac
