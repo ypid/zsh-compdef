@@ -1,10 +1,7 @@
 #compdef pgrep pkill 
 #
-# OpenBSD has different `ps` than GNU foo on Linux, and also different
-# pgrep/pkill options than available on Linux or the Mac OS X MacPorts
-# version. Fun!
-#
-# XXX fixup ps calls, adjust options available for OpenBSD ...
+# OpenBSD has different `ps` than GNU foo on Linux, so need custom
+# completion.
 
 local context state line ret=1 expl
 typeset -A opt_args
@@ -42,7 +39,7 @@ case $state in
     local -a used ttys
     used=(${(s:,:)IPREFIX})
 
-    ttys=( /dev/tty*(N) /dev/pts/*(N) )
+    ttys=( /dev/tty*(N) )
     _wanted tty expl 'terminal device' compadd -S ',' -q -F used ${ttys#/dev/}
     ;;
     
@@ -51,7 +48,9 @@ case $state in
 
     local -a used sid
     used=(${(s:,:)IPREFIX})
-    sid=(${(uon)$(ps -A o sid=)})
+# KLUGE ps(1) lacks 'sid' KEYWORD, but it looks like getsid returns same value
+# as the pgid value, so running with that.
+    sid=(${(uon)$(ps axo pgid=)})
 
     _wanted sid expl 'session id' compadd -S ',' -q -F used $sid
     ;;
@@ -61,7 +60,7 @@ case $state in
 
     local -a used ppid
     used=(${(s:,:)IPREFIX})
-    ppid=(${(uon)$(ps -A o ppid=)})
+    ppid=(${(uon)$(ps axo ppid=)})
 
     _wanted ppid expl 'parent process id' compadd -S ',' -q -F used $ppid
     ;;
@@ -71,7 +70,7 @@ case $state in
 
     local -a used pgid
     used=(${(s:,:)IPREFIX})
-    pgid=(${(uon)$(ps -A o pgid=)})
+    pgid=(${(uon)$(ps axo pgid=)})
 
     _wanted pgid expl 'process group id' compadd -S ',' -q -F used $pgid
     ;;
@@ -84,9 +83,9 @@ case $state in
     fi
     if (( ${+opt_args[-f]} ))
     then
-      _wanted pname expl $ispat'process command line' compadd ${(u)${(f)"$(ps -A o cmd=)"}}
+      _wanted pname expl $ispat'process command line' compadd ${(u)${(f)"$(ps axo command=)"}}
     else
-      _wanted pname expl $ispat'process name' compadd ${(u)${(f)"$(ps -A co cmd=)"}}
+      _wanted pname expl $ispat'process name' compadd ${(u)${(f)"$(ps axco command=)"}}
     fi
     ;;
   
