@@ -47,7 +47,7 @@ case $state in
     local -a used ttys
     used=(${(s:,:)IPREFIX})
 
-    ttys=( /dev/tty*(N) /dev/pts/*(N) )
+    ttys=( /dev/tty*(N) )
     _wanted tty expl 'terminal device' compadd -S ',' -q -F used ${ttys#/dev/}
     ;;
     
