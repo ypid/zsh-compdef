@@ -19,7 +19,7 @@ _arguments \
   '--natural[ignore case distinctions of input numerals]' \
   '--outputtmpl=[custom output template]:template:' \
   '--raw[show pitch numbers not note names]' \
-  '--transpose=[number to transpose by]:number:' \
+  '--transpose=[transpose by or to]:noteornum:(a b d e f g cis dis fis gis ais des ees ges aes bes)' \
   '*: :_values -s / "numerals" $numerals' \
   && return 0
 

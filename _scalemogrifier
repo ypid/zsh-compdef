@@ -22,7 +22,7 @@ _arguments \
   '--ors=[output record separator]:string:' \
   '--raw[show pitch numbers not note names]' \
   '--relative[lilypond relative output]' \
-  '--transpose=[number to transpose by]:number:' \
+  '--transpose=[transpose by or to]:noteornum:(a b d e f g cis dis fis gis ais des ees ges aes bes)' \
   && return 0
 
 case "$state" in
