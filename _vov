@@ -11,6 +11,7 @@ typeset -A opt_args
 local -a numerals
 numerals=(I II III IV V VI VII i ii iii iv v vi vii)
 
+# transpose can take numbers, but simplier to just show possible notes
 _arguments \
   '--factor=[default chord factor]:factor:(1 3 5 7 9 11 13)' \
   '--flats[output using flats]' \
