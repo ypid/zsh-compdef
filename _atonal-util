@@ -2,12 +2,13 @@
 #
 # ZSH completion for atonal-util. Install to a $fpath directory.
 
+# XXX --scaledegrees=anything is messing up subsequent completion
 _atonal-util() {
-  _arguments -s \
+  _arguments \
     '--flats[print notes as flats]' \
     '(- *)--help[display help]' \
     '--ly[emit notes not pitch numbers]' \
-    '(-)--listmodes[show available modes]' \
+    '(- *)--listmodes[show available modes]' \
     '--scaledegrees=[degrees in the scale]' \
     '*::atonal-util command:_atonalutil_mode'
 }
