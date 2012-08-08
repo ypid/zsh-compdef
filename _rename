@@ -3,8 +3,6 @@
 # For my version (there are other, incompatible, implementations (RHEL
 # has a very wacky implementation, not even Perl)).
 
-local ret=1
-
 _arguments \
   '-c[copy instead of rename]' \
   '-f[force changes]' \
@@ -13,6 +11,6 @@ _arguments \
   '-m[move instead of rename]' \
   '-n[dry run]' \
   '-v[verbose]' \
-  && ret=0
-
-return $ret
+  '1:perlexpr:' \
+  '*:file:_files' \
+  && return 0
