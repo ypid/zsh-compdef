@@ -30,6 +30,7 @@ _atonalutil_mode() {
     'retrograde:reverse' \
     'rotate:specific permutation' \
     'set_complex:2D pitch set to inversion chart' \
+    'subsets:subsets of a given pitch set' \
     'tcis:transposition inversion common-tone structure' \
     'tcs:transposition common-tone structure' \
     'transpose:Tn' \
@@ -122,6 +123,12 @@ _atonalutil_rotate() {
 }
 _atonalutil_set_complex() {
   _arguments -s \
+    '--flats[print notes as flats]' \
+    '--ly[emit notes not pitch numbers]'
+}
+_atonalutil_set_complex() {
+  _arguments -s \
+    '--length=[length]:value:( )' \
     '--flats[print notes as flats]' \
     '--ly[emit notes not pitch numbers]'
 }
