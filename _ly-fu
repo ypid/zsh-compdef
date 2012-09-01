@@ -142,6 +142,7 @@ _arguments \
   '--repeats=[number of repeats]:count:' \
   '--silent[skip MIDI playback]' \
   '--sleep=[sleep kluge]:seconds:' \
-  '--tempo=[tempo]:tempo:' && ret=0
+  '--tempo=[tempo]:tempo:' \
+  '--verbose[be verbose]' && ret=0
 
 return $ret
