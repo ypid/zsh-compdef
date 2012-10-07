@@ -133,6 +133,7 @@ fi
 _arguments \
   '(--relative)--absolute[absolute mode]' \
   '--articulate[include articulation]' \
+  '--events[emit lilypond event data]' \
   '(- *)--help[display help]' \
   '--instrument=[instrument]:instrument:_values "instruments" $lyinstruments' \
   '--layout[save layout]' \
