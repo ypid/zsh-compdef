@@ -1,8 +1,6 @@
 #compdef prove
 #
-# prove of TAP::Harness v3.23 and Perl v5.16.1 via MacPorts
-#
-# TODO get latest module version, report --ext= as not a boolean option
+# prove(1) of TAP::Harness v3.25
 
 _arguments \
   '(- *)'{-h,--help}'[display help and exit]' \
