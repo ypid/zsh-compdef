@@ -1,7 +1,7 @@
 #compdef pgrep pkill 
 #
 # Adapted for use on Darwin, on which I have pgrep and pkill via
-# MacPorts, but the default ZSH completion script barfs on:
+# MacPorts (proctools), but the default ZSH completion script barfs on:
 #
 #  % pkill ^Ips: illegal argument: co
 #  usage: ps [-AaCcEefhjlMmrSTvwXx] [-O fmt | -o fmt] [-G gid[,gid...]]
