@@ -1,6 +1,8 @@
 #compdef prove
 #
-# prove(1) of TAP::Harness v3.25
+# prove(1) of TAP::Harness v3.25. Consider also:
+#
+# zstyle ':completion:*:*:prove:*' file-patterns '*.t:test\ files *(-/):directories'
 
 _arguments \
   '(- *)'{-h,--help}'[display help and exit]' \
