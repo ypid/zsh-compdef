@@ -1,15 +1,18 @@
 Various ZSH completion scripts. These require http://www.zsh.org/ and
-must be located in a $fpath directory, for example under
-~/.zsh/functions via the following in the ~/.zshrc config file:
+must be located in a $fpath directory, for example in ~/.zshrc to add a
+custom directory to place these files and then to turn on completion:
 
   fpath=(~/.zsh/functions $fpath)
+  autoload -U compinit && compinit
 
 * For more info on ZSH completion, consult:
 
+  http://zshwiki.org/home/examples/compquickstart
   http://bewatermyfriend.org/p/2012/003/
 
-  or try #zsh on the Freenode IRC network (where we will likely point
-  you at the above and other docs).
+  or try #zsh on the Freenode IRC network. (Do *not* use OMZ. It is
+  buggy baggage. (Or any other shell "framework" that you do not
+  understand.))
 
 * Even more completion scripts can be found under:
 
@@ -20,4 +23,4 @@ must be located in a $fpath directory, for example under
 
   https://github.com/thrig/sial.org-scripts
 
-  or one or the other of my Perl modules.
+  or one or the other of my Perl modules (see github, CPAN).
