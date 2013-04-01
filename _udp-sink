@@ -1,0 +1,14 @@
+#compdef udp-sink
+
+local ret=1
+
+_arguments -C -s \
+  '(-6)-4[family AF_INET]' \
+  '(-4)-6[family AF_INET6]' \
+  '-c+[stats interval]:count:' \
+  '-d+[delay in milliseconds after recvs]:ms:' \
+  '-l[line buffer stdout]' \
+  '-p+[port to listen on]:port:_ports' \
+  && ret=0
+
+return $ret
