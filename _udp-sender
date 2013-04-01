@@ -2,11 +2,12 @@
 
 local ret=1
 
-_arguments -C -s \
+_arguments -S \
   '(-6)-4[family AF_INET]' \
   '(-4)-6[family AF_INET6]' \
   '-c+[packet count to send]:count:' \
-  '-d+[delay in milliseconds between sends]:ms:' \
+  '(-f)-d+[delay in milliseconds between sends]:ms:' \
+  '(-d)-f[flood send packets]' \
   '-p+[port to connect to]:port:_ports' \
   ':host:_hosts' \
   && ret=0

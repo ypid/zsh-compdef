@@ -2,7 +2,7 @@
 
 local ret=1
 
-_arguments -C -s \
+_arguments -S \
   '(-6)-4[family AF_INET]' \
   '(-4)-6[family AF_INET6]' \
   '-c+[stats interval]:count:' \
