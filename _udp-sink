@@ -8,6 +8,7 @@ _arguments -S \
   '-c+[stats interval]:count:' \
   '-d+[delay in milliseconds after recvs]:ms:' \
   '-l[line buffer stdout]' \
+  '-P+[packet size in bytes]:bytes:' \
   '-p+[port to listen on]:port:_ports' \
   && ret=0
 

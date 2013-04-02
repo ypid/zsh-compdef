@@ -9,6 +9,7 @@ _arguments -S \
   '(-f)-d+[delay in milliseconds between sends]:ms:' \
   '(-d)-f[flood send packets]' \
   '-p+[port to connect to]:port:_ports' \
+  '-P+[packet size in bytes]:bytes:' \
   ':host:_hosts' \
   && ret=0
 
