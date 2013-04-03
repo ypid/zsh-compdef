@@ -10,7 +10,7 @@ _arguments -S \
   '(-d)-f[flood send packets]' \
   '-p+[port to connect to]:port:_ports' \
   '-P+[packet size in bytes]:bytes:' \
-  ':host:_hosts' \
+  '*:host:_hosts' \
   && ret=0
 
 return $ret
