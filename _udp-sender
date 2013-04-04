@@ -8,6 +8,7 @@ _arguments -S \
   '-c+[packet count to send]:count:' \
   '(-f)-d+[delay in milliseconds between sends]:ms:' \
   '(-d)-f[flood send packets]' \
+  '-N[delay of nanoseconds not ms]' \
   '-p+[port to connect to]:port:_ports' \
   '-P+[packet size in bytes]:bytes:' \
   '*:host:_hosts' \
