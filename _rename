@@ -4,12 +4,11 @@
 # has a very wacky implementation, not even Perl)).
 
 _arguments \
-  '-c[copy instead of rename]' \
-  '-f[force changes]' \
-  '-i[interactive changes]' \
+  '-0[null delimit files via stdin]' \
+  '(-m)-c[copy instead of rename]' \
   '-M[make directories if necessary]' \
-  '-m[move instead of rename]' \
-  '-n[dry run]' \
+  '(-c)-m[move instead of rename]' \
+  {-n,-p}'[dry run (preview only)]' \
   '-v[verbose]' \
   '1:perlexpr:' \
   '*:file:_files' \
