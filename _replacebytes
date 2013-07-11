@@ -10,5 +10,6 @@ _arguments \
   '-O+[alteration offset]:number:' \
   '(-s)-S+[size of alteration]:number:' \
   '(-S)-s[use all of source file]' \
+  '-t+[truncate to offset]:number:' \
   '*:file:_files' \
   && return 0
