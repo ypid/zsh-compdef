@@ -22,13 +22,14 @@ _atonal-util() {
     '--ly[emit notes not pitch numbers]' \
     '(- *)--listmodes[show available modes]' \
     '--rs=[record separator]:sep:' \
-    '--scaledegrees=[degrees in the scale]:scaledegrees:' \
+    {--sd,--scaledegrees}'=[degrees in the scale]:scaledegrees:' \
     '*::atonal-util command:_atonalutil_mode'
 }
 
 _atonalutil_mode() {
   _atonalutil_modes=(
     'basic:prime_form and interval_class_content info' \
+    'beats2set:rhythmic beats to set class' \
     'circular_permute:all permutations of pitch set' \
     'combos:combination tones' \
     'complement:complement of set' \
@@ -59,6 +60,7 @@ _atonalutil_mode() {
     'recipe:list of methods to operate on a set with' \
     'retrograde:reverse' \
     'rotate:specific permutation' \
+    'set2beats:set class to rhythmic beats' \
     'set_complex:2D pitch set to inversion chart' \
     'subsets:subsets of a given pitch set' \
     'tcis:transposition inversion common-tone structure' \
@@ -93,7 +95,15 @@ _atonalutil_basic() {
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
-    '--rs=[record separator]:sep:'
+    '--rs=[record separator]:sep:' \
+    '*:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches'
+  # TODO but really should be a forte number or one or more pitches...
+}
+_atonalutil_beats2set() {
+  _arguments -s \
+    {--sd,--scaledegrees}'=[beats per measure]:scaledegrees:' \
+    '--rs=[record separator]:sep:' \
+    '*:beatornot:(x .)'
 }
 _atonalutil_circular_permute() {
   _arguments -s \
@@ -291,6 +301,10 @@ _atonalutil_rotate() {
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
     '--rs=[record separator]:sep:'
+}
+_atonalutil_set2beats() {
+  _arguments -s \
+    {--sd,--scaledegrees}'=[beats per measure]:scaledegrees:'
 }
 _atonalutil_set_complex() {
   _arguments -s \
