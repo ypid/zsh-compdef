@@ -9,11 +9,11 @@ _arguments \
   '-g[match multiple times per line]' \
   '-o[output format]:strftime format: ' \
   '-s[strip non-timestamp data]' \
+  '1:file:_files' \
 - '(thisyear)' \
   '-y[fill in current year if necessary]' \
 - '(someyear)' \
   '-Y+[fill in custom year if necessary]:year: ' \
-  '1:file:_files' \
   && ret=0
 
 return $ret
