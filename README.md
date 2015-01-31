@@ -22,7 +22,7 @@ and enable it in your `.zshrc`:
 
 ```zsh
 plugins+=(zsh-compdef)
-autoload -U compinit && compinit
+autoload -U compinit && compinit ## Does not need to be run on every zsh startup.
 ```
 
 [git-annex]: http://git-annex.branchable.com/
