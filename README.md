@@ -25,7 +25,6 @@ plugins+=(zsh-compdef)
 autoload -U compinit && compinit ## Does not need to be run on every zsh startup.
 ```
 
-[git-annex]: http://git-annex.branchable.com/
 [oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
 
 (Some folks change $fpath after the autoload, then wonder why things "do
