@@ -1,12 +1,32 @@
+# zsh-compdef
+
 Various ZSH completion scripts. These require http://www.zsh.org/ and must be
 located in a $fpath directory. For example, a custom directory could be used
 via ~/.zshrc settings such as:
 
-  # custom dir for completions, plus the vendor default ones
-  fpath=(~/.zsh/functions $fpath)
+```zsh
+# custom dir for completions, plus the vendor default ones
+fpath=(~/.zsh/functions $fpath)
 
-  # turn on the completion system
-  autoload -U compinit && compinit
+# turn on the completion system
+autoload -U compinit && compinit
+```
+
+If you use [oh-my-zsh][] then just clone the repository inside your oh-my-zsh repo:
+
+```Shell
+git clone https://github.com/thrig/zsh-compdef ~/.oh-my-zsh/custom/plugins/zsh-compdef
+```
+
+and enable it in your `.zshrc`:
+
+```zsh
+plugins+=(zsh-compdef)
+autoload -U compinit && compinit
+```
+
+[git-annex]: http://git-annex.branchable.com/
+[oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
 
 (Some folks change $fpath after the autoload, then wonder why things "do
 not work.")
